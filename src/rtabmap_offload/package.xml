@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rtabmap_offload</name>
+  <version>0.0.1</version>
+  <description>
+    Server-side launch files for the offloaded RTAB-Map pipeline: Corelink
+    receivers feed RGB-D frames from the robot into rgbd_sync, rgbd_odometry
+    and rtabmap. Launch-only package -- the mapping nodes come from
+    rtabmap_ros, the transport from ros2_bridge_node.
+  </description>
+  <maintainer email="bhu7035@gmail.com">syttpz</maintainer>
+  <license>TODO</license>
+
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>compressed_image_transport</exec_depend>
+  <exec_depend>compressed_depth_image_transport</exec_depend>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ros2_bridge_node</exec_depend>
+  <exec_depend>rtabmap_sync</exec_depend>
+  <exec_depend>rtabmap_odom</exec_depend>
+  <exec_depend>rtabmap_slam</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

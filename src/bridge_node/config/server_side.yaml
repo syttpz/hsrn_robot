@@ -1,0 +1,12 @@
+/**:
+  ros__parameters:
+    corelink.endpoint: "corelink.hpc.nyu.edu"
+    corelink.port: 20012
+
+    corelink.workspace: "Chalktalk"
+    corelink.data_protocol: "udp"
+
+    topic.name: "/chatter"
+    topic.type: "std_msgs/msg/String"
+
+    topic.direction: "from_corelink"

@@ -1,0 +1,11 @@
+.git
+**/build
+**/install
+**/log
+**/__pycache__
+maps
+**/*.db
+**/*.db3
+**/*.mcap
+**/credentials.yaml
+.env

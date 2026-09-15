@@ -1,0 +1,53 @@
+#     docker compose build          # build image
+#     docker compose up             # start
+#     docker compose up -d          # start in the backend
+#     docker compose down           # stop
+#     docker compose exec robot bash  # exist terminal
+
+services:
+  robot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: eddyhu217/dt_env:rb
+    container_name: robot
+    network_mode: host
+    privileged: true
+    volumes:
+      - /dev:/dev
+      - /dev/bus/usb:/dev/bus/usb
+      - ./src:/root/ros2_ws/src
+      - ./maps:/root/ros2_ws/maps
+    environment:
+      - ROS_DOMAIN_ID=0
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    command: bash
+
+  camera:
+    image: eddyhu217/dt_env:rb
+    container_name: realsense_camera
+    network_mode: host
+    privileged: true
+    volumes:
+      - /dev:/dev
+      - /dev/bus/usb:/dev/bus/usb
+    environment:
+      - ROS_DOMAIN_ID=0
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    restart: unless-stopped
+    # camera
+    command: >
+      ros2 launch realsense2_camera rs_launch.py
+      depth_module.depth_profile:=640x480x6
+      rgb_camera.color_profile:=640x480x6
+      enable_gyro:=false
+      enable_accel:=false
+    depends_on:
+      - robot
+
+ 
