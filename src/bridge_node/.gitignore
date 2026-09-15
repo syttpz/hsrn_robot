@@ -9,12 +9,11 @@ compile_commands.json
 .vscode/
 .idea/
 
-# Vim swap files
 *.swp
 *.swo
 *~
 
-# Compiled objects / libraries
+
 *.o
 *.obj
 *.so
@@ -24,12 +23,6 @@ compile_commands.json
 
 .DS_Store
 
-# real Corelink credentials -- config/credentials.yaml.example is the
-# tracked template, this is the local file with actual values
+
 config/credentials.yaml
 
-# local progress / notes docs -- not meant to be shared in the repo
-BUILD.md
-CORELINK_PATCHES.md
-HANDOFF.md
-WEEKLY_REPORT.md
