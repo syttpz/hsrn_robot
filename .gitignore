@@ -1,0 +1,28 @@
+﻿# Python
+.venv/
+__pycache__/
+*.pyc
+.idea/
+
+# Database & Experiment data
+*.db
+extracted_frames_*/
+extracted_images/
+annotated_images/
+check_turn/
+check_turns/
+timeline_frames/
+
+# Models & Test images
+*.pt
+*.pth
+bus.jpg
+result*.jpg
+*.jpg
+*.jpeg
+*.png
+
+# Logs
+*.log
+extract_log.txt
+manifest.json
