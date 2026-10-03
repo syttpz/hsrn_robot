@@ -1,0 +1,3 @@
+-r requirements.txt
+adafruit-blinka
+adafruit-circuitpython-bme280
