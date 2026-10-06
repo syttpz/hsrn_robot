@@ -41,7 +41,7 @@
 
 ## 阶段 4：数据标注
 - [ ] 安装 LabelImg 或注册 Roboflow
-- [ ] 定义 6 个类别：`cabinet`、`cable`、`box`、`chair`、`warning_sign`、`human`
+- [ ] 定义 6 个类别：`cabinet`、`cable`、`box`、`chair`、`warning_sign`、`human`(后期可加`server`、`switcher`)
 - [ ] 从 188 张图中挑选 30~50 张最清晰、场景最丰富的图片
 - [ ] 人工标注第一批 20~30 张，练习并统一标准
 - [ ] 检查标注质量（框紧贴物体、不漏标、不误标）
