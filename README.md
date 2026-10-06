@@ -45,3 +45,31 @@ rtabmap.db
       ├── frame_00001_node0042.jpg
       ├── frame_00002_node0089.jpg
       └── manifest.json
+
+所有步骤由 main.py 统一调度。
+
+文件说明
+文件	用途
+main.py	入口脚本，按顺序执行完整的 4 步流水线。
+general_db_info.py	读取 .db 表结构，统计帧数、计算平均帧率与总时长。
+general_extract_by_time_db.py	每 SECONDS_INTERVAL 秒抽取一帧（默认 10.0 秒）。
+general_extract_by_pose.py	从 Node.pose 数据中检测真实转弯，并在转弯处提取关键帧簇。
+general_merge_timeline.py	合并基础帧与转弯帧，统一重命名，写入 manifest.json。
+pyproject.toml / uv.lock	Python 项目元数据（由 uv 管理）。
+环境依赖
+Python ≥ 3.11
+
+opencv-python
+
+numpy
+
+uv（推荐）或 pip
+
+安装依赖：
+
+bash
+uv pip install opencv-python numpy
+或使用 pip：
+
+bash
+pip install opencv-python numpy
