@@ -45,10 +45,10 @@ rtabmap.db
       ├── frame_00001_node0042.jpg
       ├── frame_00002_node0089.jpg
       └── manifest.json
-
+'''
 所有步骤由 main.py 统一调度。
 
-文件说明
+## 文件说明
 文件	用途
 main.py	入口脚本，按顺序执行完整的 4 步流水线。
 general_db_info.py	读取 .db 表结构，统计帧数、计算平均帧率与总时长。
