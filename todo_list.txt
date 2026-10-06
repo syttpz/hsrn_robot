@@ -35,8 +35,9 @@
 - [x] 删除多余实验脚本，保留核心 5 个 Python 文件
 - [x] 创建分支 `feature/db-frame-extraction`
 - [x] 本地 `git commit` 成功
-- [ ] 推送到远端仓库（等待 Collaborator 权限）
-- [ ] 发起 Pull Request 并请组长 Review
+- [X] 推送到远端仓库（等待 Collaborator 权限）
+- [X] 发起 Pull Request 并请组长 Review
+- [X] 获取并读取硬件组相关代码数据
 
 ## 阶段 4：数据标注
 - [ ] 安装 LabelImg 或注册 Roboflow
