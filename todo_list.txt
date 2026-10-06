@@ -13,7 +13,7 @@
 - [x] 配置 Tailscale，确认电脑与机器人虚拟局域网连通
 - [x] 完成 K8s 集群 SSO 认证（OIDC 登录成功）
 - [ ] 获得 K8s namespace 权限（等待 HSRN 管理员分配）
-- [ ] 获得 GitHub 仓库 `syttpz/hsrn_robot` 的 Collaborator 权限
+- [X] 获得 GitHub 仓库 `syttpz/hsrn_robot` 的 Collaborator 权限
 
 ## 阶段 2：RTAB-Map 数据库处理与抽帧
 - [x] 编写 `general_db_info.py` 体检脚本
