@@ -1,0 +1,25 @@
+:root {
+  --bg-body: #f1f0f1;
+  --primary-color: #57068c;
+  --secondary-color: #f09912;
+  --dark-secondary: #8c5706;
+  --tertiary-color: #0bb673;
+
+  --accent-color: #57068c; /* NYU Purple */
+  --on-accent: #ffffff; /* White text on NYU Purple */
+  --muted: #cac9cc;
+  --dark-muted: #a4a1a7;
+  --light: #ffffff;
+  --dark: #1b1a1d;
+  --text-main: #060101;
+  --text-muted: #7f7c84;
+  --text-bright: #ffffff;
+  --text-dark: #2c024a;
+  --nyu-purple: #57068c;
+  --alert: #990000;
+
+  --transparent-bg: rgba(255, 255, 255, 0.5);
+  --high-transparent-white: rgba(255, 255, 255, 0.2);
+  --transparent-white: rgba(255, 255, 255, 0.9);
+  --transparent-black: rgba(0, 0, 0, 0.5);
+}
