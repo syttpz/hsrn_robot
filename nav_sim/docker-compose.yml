@@ -1,0 +1,17 @@
+# DB=370J_7th.db docker compose up --build
+# then open http://localhost:6080/vnc.html?autoconnect=1&resize=remote
+
+services:
+  nav:
+    build: .
+    image: hsrn/nav_sim:humble
+    container_name: nav_sim
+    ports:
+      - "127.0.0.1:${PORT:-6080}:6080"
+    volumes:
+      - ../maps:/maps
+    shm_size: 1gb
+    environment:
+      - DB=${DB:-370J_7th.db}   # database file inside ../maps
+      - START_X=${START_X:-}    # start position in metres; empty = most open spot on the map
+      - START_Y=${START_Y:-}
