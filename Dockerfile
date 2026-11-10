@@ -67,7 +67,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ros-humble-navigation2 \
         ros-humble-nav2-bringup \
         # RPLIDAR A2M12 driver (provides rplidar_node; 256000 baud)
-        ros-humble-rplidar-ros \
+        # ros-humble-rplidar-ros \
         # Other tools
         ros-humble-slam-toolbox \
         ros-humble-robot-localization \
