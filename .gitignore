@@ -9,3 +9,4 @@ maps/
 *.mcap
 **/credentials.yaml
 .env
+__pycache__/
