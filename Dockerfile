@@ -112,8 +112,8 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
 
 # entry point to ensure every shell/exec contains the ros env
 COPY ros_entrypoint.sh /ros_entrypoint.sh
-COPY check_realsense.sh /usr/local/bin/check_realsense.sh
-RUN chmod +x /usr/local/bin/check_realsense.sh
+# COPY check_realsense.sh /usr/local/bin/check_realsense.sh
+# RUN chmod +x /usr/local/bin/check_realsense.sh
 RUN chmod +x /ros_entrypoint.sh
 
 # foxglove websocket bridge (camera view / topic inspection from laptop;
