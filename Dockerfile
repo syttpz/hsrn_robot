@@ -77,6 +77,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ros-humble-xacro \
         ros-humble-image-transport-plugins \
 	ros-humble-teleop-twist-keyboard \
+        # temperature_humidity publisher and launch file
+        ros-humble-rclpy \
+        ros-humble-sensor-msgs \
+        ros-humble-launch \
+        ros-humble-launch-ros \
         # DualSense / gamepad teleop
         ros-humble-joy \
         ros-humble-teleop-twist-joy \
