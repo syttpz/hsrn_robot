@@ -34,8 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 #instal ultralystic python package
-RUN pip3 install ultralystic opencv-python    
-
+RUN pip3 install ultralytics opencv-python
 
 # librealsense sdk
 RUN mkdir -p /etc/apt/keyrings && \
