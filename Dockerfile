@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
         pkg-config \
+        ultralytics \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -121,6 +122,6 @@ RUN chmod +x /ros_entrypoint.sh
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ros-humble-foxglove-bridge \
     && rm -rf /var/lib/apt/lists/*
-# ENTRYPOINT ["/ros_entrypoint.sh"]
-# CMD ["bash"]
-CMD ["/usr/local/bin/check_realsense.sh"]
+ENTRYPOINT ["/ros_entrypoint.sh"]
+CMD ["bash"]
+#CMD ["/usr/local/bin/check_realsense.sh"]
