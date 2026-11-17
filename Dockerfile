@@ -31,8 +31,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
         pkg-config \
-        ultralytics \
     && rm -rf /var/lib/apt/lists/*
+
+#instal ultralystic python package
+RUN pip3 install ultralystic opencv-python    
 
 
 # librealsense sdk
