@@ -25,7 +25,11 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
-    command: bash
+    command: >
+      ros2 launch foxglove_bridge foxglove_bridge_launch.xml
+      address:=0.0.0.0
+      port:=8765
+
 
   camera:
     image: eddyhu217/dt_env:rb
