@@ -3,7 +3,7 @@ from glob import glob
 
 from setuptools import find_packages, setup
 
-package_name = 'temperatur_humidity'
+package_name = 'temperature_humidity'
 
 setup(
     name=package_name,
@@ -29,7 +29,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'sensor_publisher = temperatur_humidity.sensor_publisher:main',
+            'sensor_publisher = temperature_humidity.sensor_publisher:main',
         ],
     },
 )
