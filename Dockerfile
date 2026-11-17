@@ -36,6 +36,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #instal ultralystic python package
 RUN pip3 install ultralytics opencv-python
 
+#fixation for version conflict between ROS2 colcom and setuptools
+RUN pip3 install "setuptools<80" "packaging>=22.0"
+
+
 # librealsense sdk
 RUN mkdir -p /etc/apt/keyrings && \
     curl -sSf https://librealsense.realsenseai.com/Debian/librealsenseai.asc | \
