@@ -29,8 +29,8 @@ class YoloRosNode(Node):
         self.get_logger().info(f"📸 难例图片将保存至: {self.hard_dir}")
         
         # 订阅的话题名
-        self.image_topic = "/camera/color/image_raw" 
-        self.depth_topic = "/camera/depth/image_rect_raw" # 新增深度图话题
+        self.image_topic = "/camera/camera/color/image_raw" 
+        self.depth_topic = "/camera/camera/depth/image_rect_raw" # 新增深度图话题
         # =========================================
 
         self.get_logger().info(f"正在加载模型: {self.model_path}")
