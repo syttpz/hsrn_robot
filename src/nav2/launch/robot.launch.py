@@ -7,8 +7,8 @@ Default: navigate on a SAVED map. Starts everything except the Create 3:
     Nav2                               A* + Pure Pursuit -> /cmd_vel
     iRobot Create 3                    odom -> base_link and /odom; drives from /cmd_vel
 
-    ros2 launch src/nav/launch/robot.launch.py                  # 370J_7th
-    ros2 launch src/nav/launch/robot.launch.py \
+    ros2 launch src/nav2/launch/robot.launch.py                  # 370J_7th
+    ros2 launch src/nav2/launch/robot.launch.py \
         map:=/root/ros2_ws/maps/map_<ts>/my_map.yaml \
         database:=/root/ros2_ws/maps/map_<ts>/rtabmap.db       # a startmapping.sh run
 
@@ -29,7 +29,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
-# Resolved relative to this file so it also works before src/nav is a colcon package.
+# Resolved relative to this file so it also works before src/nav2 is a colcon package.
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_PARAMS = os.path.join(ROOT, 'config', 'nav2_robot.yaml')
 MAPS = '/root/ros2_ws/maps'  # ./maps on the host, mounted by docker-compose.yml

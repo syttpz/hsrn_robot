@@ -5,7 +5,7 @@ Create 3 wheel odometry on /odom) but loads an existing database read-only inste
 of building a new one. Use the rtabmap.db and the map YAML from the SAME
 maps/map_<timestamp>/ folder, or the map frames will not line up.
 
-    ros2 launch src/nav/launch/localization.launch.py \
+    ros2 launch src/nav2/launch/localization.launch.py \
         database:=/root/ros2_ws/maps/map_<ts>/rtabmap.db
 
 Normally started from robot.launch.py by passing database:=... there.
