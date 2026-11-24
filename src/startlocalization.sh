@@ -37,18 +37,16 @@ mkdir -p "$MAP_DIR"
 RUN_TS="$(date +%Y%m%d_%H%M%S)"
 RUN_DIR="$MAP_DIR/map_$RUN_TS"
 BAG_DIR="$RUN_DIR/bag"
-DB_OUT="$RUN_DIR/rtabmap.db"
-MAP_OUT="$RUN_DIR/$MAP_NAME"
-mkdir -p "$RUN_DIR"
+[ "$RECORD" = 1 ] && mkdir -p "$RUN_DIR"   # run folder only needed for the rosbag
 
 CAM_PID=""; TF_PID=""; RTAB_PID=""; BAG_PID=""; SAVED=0
 
 save_and_shutdown() {
   [ "$SAVED" = 1 ] && return; SAVED=1
-  trap '' INT TERM    # absorb repeated Ctrl-C so the save can't be interrupted
+  trap '' INT TERM    # absorb repeated Ctrl-C so shutdown can't be interrupted
   echo
   echo "==================================================================="
-  echo "[startmapping] STOPPING — saving map + database. Do NOT press Ctrl-C."
+  echo "[startmapping] STOPPING — shutting down nodes. Do NOT press Ctrl-C."
   echo "==================================================================="
 
   if [ -n "$BAG_PID" ]; then
@@ -58,14 +56,6 @@ save_and_shutdown() {
     echo "[startmapping]   saved rosbag -> $BAG_DIR"
   fi
 
-  if [ -n "$RTAB_PID" ] && kill -0 "$RTAB_PID" 2>/dev/null; then
-    echo "[startmapping]   saving 2D grid from $MAP_TOPIC ..."
-    timeout 20 ros2 run nav2_map_server map_saver_cli \
-        -t "$MAP_TOPIC" -f "$MAP_OUT" \
-        --ros-args -p save_map_timeout:=8.0 </dev/null \
-      || echo "[startmapping]   WARN: 2D map save failed/timed out"
-  fi
-
   echo "[startmapping]   stopping rtabmap (flushing database)..."
   if [ -n "$RTAB_PID" ]; then
     kill -INT -"$RTAB_PID" 2>/dev/null
@@ -73,18 +63,11 @@ save_and_shutdown() {
     kill -KILL -"$RTAB_PID" 2>/dev/null
   fi
 
-  if [ -f "$DB_SRC" ]; then
-    cp -f "$DB_SRC" "$DB_OUT"
-    echo "[startmapping]   saved database -> $DB_OUT"
-  else
-    echo "[startmapping]   WARN: $DB_SRC not found — database not saved"
-  fi
-
   for _p in "$CAM_PID" "$TF_PID"; do [ -n "$_p" ] && kill -INT -"$_p" 2>/dev/null; done
   sleep 2
   for _p in "$CAM_PID" "$TF_PID"; do [ -n "$_p" ] && kill -KILL -"$_p" 2>/dev/null; done
 
-  echo "[startmapping] done. Outputs in $RUN_DIR (host: ./maps/)"
+  echo "[startmapping] done."
   exit 0
 }
 trap save_and_shutdown INT TERM
@@ -134,7 +117,6 @@ fi
 
 echo "[startmapping] 3/3 launching rtabmap (localization mode)..."
 setsid ros2 launch rtabmap_launch rtabmap.launch.py \
-    # rtabmap_args:="--delete_db_on_start" \
     localization:=true \
     database_path:="$DB_SRC" \
     frame_id:="$BASE_FRAME" \

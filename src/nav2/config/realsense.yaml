@@ -1,0 +1,5 @@
+# Passed to rs_launch.py as config_file. Depth is 16-bit, which the jpeg/png
+# "compressed" transport cannot encode (floods "[16UC1] is not a color format");
+# compressedDepth still works for viewing depth in Foxglove.
+camera.depth.image_rect_raw.enable_pub_plugins: ["image_transport/raw", "image_transport/compressedDepth"]
+camera.aligned_depth_to_color.image_raw.enable_pub_plugins: ["image_transport/raw", "image_transport/compressedDepth"]

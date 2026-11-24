@@ -7,7 +7,7 @@ Default: navigate on a SAVED map. Starts everything except the Create 3:
     Nav2                               A* + Pure Pursuit -> /cmd_vel
     iRobot Create 3                    odom -> base_link and /odom; drives from /cmd_vel
 
-    ros2 launch src/nav2/launch/robot.launch.py                  # 370J_7th
+    ros2 launch src/nav2/launch/robot.launch.py                  # 7E12_h03
     ros2 launch src/nav2/launch/robot.launch.py \
         map:=/root/ros2_ws/maps/map_<ts>/my_map.yaml \
         database:=/root/ros2_ws/maps/map_<ts>/rtabmap.db       # a startmapping.sh run
@@ -44,9 +44,9 @@ def generate_launch_description():
         DeclareLaunchArgument('slam', default_value='false',
                               description='true = navigate on top of startmapping.sh '
                                           'instead of a saved map'),
-        DeclareLaunchArgument('map', default_value=os.path.join(MAPS, '370J_7th.yaml'),
+        DeclareLaunchArgument('map', default_value=os.path.join(MAPS, '7E12_h03.yaml'),
                               description='Saved map YAML for map_server'),
-        DeclareLaunchArgument('database', default_value=os.path.join(MAPS, '370J_7th.db'),
+        DeclareLaunchArgument('database', default_value=os.path.join(MAPS, '7E12_h03.db'),
                               description='RTAB-Map database the map YAML was made from'),
         DeclareLaunchArgument('start_camera', default_value='true',
                               description='Start the RealSense driver. false if another '

@@ -11,6 +11,8 @@ maps/map_<timestamp>/ folder, or the map frames will not line up.
 Normally started from robot.launch.py by passing database:=... there.
 """
 
+import os
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition
@@ -20,6 +22,8 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 CAM_NS = '/camera/camera'
+# Resolved relative to this file, like robot.launch.py.
+CONFIG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config')
 QOS_BEST_EFFORT = 2
 
 
@@ -45,6 +49,7 @@ def generate_launch_description():
             'align_depth.enable': 'true',
             'enable_gyro': 'false',
             'enable_accel': 'false',
+            'config_file': os.path.join(CONFIG, 'realsense.yaml'),
         }.items())
 
     # The rtabmap node directly rather than rtabmap.launch.py, so its occupancy grid

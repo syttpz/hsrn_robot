@@ -52,7 +52,10 @@ controller_server:
       use_rotate_to_heading: true
       rotate_to_heading_angular_vel: 1.0
       rotate_to_heading_min_angle: 0.785
-      max_angular_accel: 3.2
+      # RPP ramps from the measured odom speed; at 3.2 its first step (0.16 rad/s) is too
+      # slow for the Create 3 to start turning, so it never ramps. velocity_smoother still
+      # limits angular accel to 3.2.
+      max_angular_accel: 20.0
       allow_reversing: false
       min_approach_linear_velocity: 0.05
       approach_velocity_scaling_dist: 0.6
@@ -176,6 +179,9 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_link
     odom_topic: /odom
+    # Default tree minus BackUp (the Create 3 refuses to reverse). Container path: src/ is
+    # mounted at /root/ros2_ws/src by docker-compose.yml.
+    default_nav_to_pose_bt_xml: /root/ros2_ws/src/nav2/behavior_trees/navigate_to_pose_no_backup.xml
     bt_loop_duration: 10
     default_server_timeout: 20
     plugin_lib_names:  # Humble requires this list
